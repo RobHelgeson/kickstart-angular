@@ -1,17 +1,17 @@
-import { provideZoneChangeDetection } from "@angular/core";
+import { provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { App } from './app/app.component';
+import { FaqPageComponent } from './app/components/faq-page/faq-page.component';
 import { HomeComponent } from './app/components/home/home.component';
+import { faqResolver } from './app/resolvers/faq.resolver';
 
 const routes = [
   { path: '', component: HomeComponent },
+  { path: 'faq', component: FaqPageComponent, resolve: { faqs: faqResolver } },
   { path: '**', redirectTo: '' }
 ];
 
 bootstrapApplication(App, {
-  providers: [
-    provideZoneChangeDetection(),
-    provideRouter(routes)
-  ]
+  providers: [provideZoneChangeDetection(), provideRouter(routes, withComponentInputBinding())]
 }).catch(err => console.error(err));

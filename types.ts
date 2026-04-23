@@ -35,3 +35,11 @@ export interface Page {
   image?: File | null;
   rich_text?: string;
 }
+
+export interface Faq {
+  uid: string;
+  _version?: number;
+  title: string;        // the question
+  answer: string;
+  display_order: number;
+}
