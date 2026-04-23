@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Faq } from '../../../../types';
-import { FaqItemComponent } from '../faq-item/faq-item.component';
+import { FaqContentStackConnectorComponent } from '../faq-content-stack-connector/faq-content-stack-connector.component';
 
 @Component({
   selector: 'app-faq-page',
   standalone: true,
-  imports: [FaqItemComponent],
+  imports: [FaqContentStackConnectorComponent],
   templateUrl: './faq-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

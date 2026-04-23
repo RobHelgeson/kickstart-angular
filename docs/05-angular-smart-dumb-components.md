@@ -16,6 +16,7 @@ A common Angular pattern is to separate components by responsibility:
 **Why bother?** A dumb component is reusable and testable in isolation. You can render `<app-faq-item [faq]="someFaq" />` anywhere without worrying about routing or service injection. A smart component can be as messy as it needs to be — it's the one place that wires everything together.
 
 In this feature:
+
 - `FaqPageComponent` is smart: it reads the resolver's data from `ActivatedRoute` and owns the `faqs` signal.
 - `FaqItemComponent` is dumb: it receives one `Faq` object and renders it. It has no knowledge of Angular routing, ContentStack, or how the data was fetched.
 

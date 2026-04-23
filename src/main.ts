@@ -9,6 +9,7 @@ import { faqResolver } from './app/resolvers/faq.resolver';
 const routes = [
   { path: '', component: HomeComponent },
   { path: 'faq', component: FaqPageComponent, resolve: { faqs: faqResolver } },
+  { path: 'other/page/here', loadComponent: () => import('./app/components/other/other.component').then(m => m.OtherComponent) },
   { path: '**', redirectTo: '' }
 ];
 

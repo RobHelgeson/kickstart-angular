@@ -2,10 +2,8 @@
   <h1 class="text-4xl font-bold mb-6">Frequently Asked Questions</h1>
 
   @if (faqs().length === 0) {
-    <p class="text-gray-600">No FAQs published yet.</p>
-  } @else {
-    @for (faq of faqs(); track faq.uid) {
-      <app-faq-item [faq]="faq" />
-    }
-  }
+  <p class="text-gray-600">No FAQs published yet.</p>
+  } @else { @for (faq of faqs(); track faq.uid) {
+  <app-faq-content-stack-connector [faq]="faq" />
+  } }
 </section>

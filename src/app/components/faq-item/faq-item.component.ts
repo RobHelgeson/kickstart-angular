@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Faq } from '../../../../types';
 
 @Component({
   selector: 'app-faq-item',
@@ -8,5 +7,6 @@ import { Faq } from '../../../../types';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FaqItemComponent {
-  readonly faq = input.required<Faq>();
+  readonly question = input.required<string>();
+  readonly answer = input.required<string>();
 }
