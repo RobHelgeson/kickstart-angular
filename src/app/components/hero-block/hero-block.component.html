@@ -1,0 +1,26 @@
+<div
+  class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 bg-slate-100"
+  [class.md:flex-row]="block().layout === 'image_left'"
+  [class.md:flex-row-reverse]="block().layout !== 'image_left'"
+>
+  <div class="w-full md:w-1/2">
+    @if (block().image) {
+      <img
+        [src]="block().image?.url"
+        [alt]="block().image?.title"
+        width="200"
+        height="112"
+        class="w-full"
+      />
+    }
+  </div>
+
+  <div class="w-full md:w-1/2 p-4">
+    @if (block().title) {
+      <h2 class="text-2xl font-bold">{{ block().title }}</h2>
+    }
+    @if (block().copy) {
+      <div class="prose" [innerHTML]="block().copy"></div>
+    }
+  </div>
+</div>

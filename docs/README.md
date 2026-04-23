@@ -14,6 +14,9 @@ Read them in order the first time through. Later, use them as reference.
 | [04 — Angular Route Resolvers](./04-angular-route-resolvers.md) | What a resolver does, the functional `ResolveFn` form, how resolved data flows into components |
 | [05 — Angular Smart/Dumb Components](./05-angular-smart-dumb-components.md) | Container vs presentational split, signal inputs, OnPush change detection, `@for`/`@if` control flow |
 | [06 — FAQ Feature Walkthrough](./06-faq-feature-walkthrough.md) | End-to-end guide: create the content type, seed entries, navigate to `/faq` |
+| [07 — Content Type References](./07-content-type-references.md) | What references are, inline vs top-level modeling, `.includeReference()` and nested resolution |
+| [08 — The Page Builder Pattern](./08-page-builder-pattern.md) | Modular blocks, discriminated unions, the dispatcher pattern, adapter vs presentational components |
+| [09 — CMS-Driven Page Walkthrough](./09-cms-driven-page-walkthrough.md) | End-to-end guide: build `/pages/faq-demo` with a reusable FAQ Section content type |
 
 ## What this feature demonstrates
 

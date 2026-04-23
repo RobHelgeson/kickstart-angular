@@ -1,0 +1,24 @@
+@if (page(); as p) {
+  <main class="max-w-screen-md mx-auto py-8">
+    @if (p.title) {
+      <h1 class="text-4xl font-bold mb-4">{{ p.title }}</h1>
+    }
+    @if (p.description) {
+      <p class="mb-6">{{ p.description }}</p>
+    }
+
+    <div class="space-y-8">
+      @for (item of p.blocks ?? []; track $index) {
+        @if ('block' in item) {
+          <app-hero-block [block]="item.block" />
+        } @else if ('faq_section' in item) {
+          <app-faq-section-block [data]="item.faq_section" />
+        }
+      }
+    </div>
+  </main>
+} @else {
+  <main class="max-w-screen-md mx-auto py-8">
+    <p class="text-gray-600">Page not found.</p>
+  </main>
+}

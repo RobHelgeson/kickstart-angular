@@ -3,7 +3,7 @@ import * as contentstack from '@contentstack/delivery-sdk';
 import { QueryOperation, Region } from '@contentstack/delivery-sdk';
 import ContentstackLivePreview, { IStackSdk } from '@contentstack/live-preview-utils';
 import { Observable, from } from 'rxjs';
-import type { Faq, Page } from '../../../types';
+import type { Faq, Page, PageWithBlocks } from '../../../types';
 import { environment } from '../../environments/environment';
 
 type Stack = ReturnType<typeof contentstack.default.stack>;
@@ -79,6 +79,22 @@ export class ContentstackService {
         .orderByAscending('display_order')
         .find<Faq>()
         .then((result: any) => result.entries as Faq[])
+    );
+  }
+
+  getPageWithBlocks(url: string): Observable<PageWithBlocks | null> {
+    return from(
+      this.stack
+        .contentType('page')
+        .entry()
+        .includeReference([
+          'blocks.faq_section.section',
+          'blocks.faq_section.section.faqs'
+        ])
+        .query()
+        .where('url', QueryOperation.EQUALS, url)
+        .find<PageWithBlocks>()
+        .then((result: any) => (result.entries[0] ?? null) as PageWithBlocks | null)
     );
   }
 }
