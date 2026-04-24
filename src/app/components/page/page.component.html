@@ -1,5 +1,5 @@
-@if (page(); as p) {
-  <main class="max-w-screen-md mx-auto py-8">
+<main class="max-w-screen-md mx-auto py-8">
+  @if (page(); as p) {
     @if (p.title) {
       <h1 class="text-4xl font-bold mb-4">{{ p.title }}</h1>
     }
@@ -8,17 +8,11 @@
     }
 
     <div class="space-y-8">
-      @for (item of p.blocks ?? []; track $index) {
-        @if ('block' in item) {
-          <app-hero-block [block]="item.block" />
-        } @else if ('faq_section' in item) {
-          <app-faq-section-block [data]="item.faq_section" />
-        }
+      @for (item of blocks(); track $index) {
+        <ng-container *ngComponentOutlet="item.component; inputs: item.inputs" />
       }
     </div>
-  </main>
-} @else {
-  <main class="max-w-screen-md mx-auto py-8">
+  } @else {
     <p class="text-gray-600">Page not found.</p>
-  </main>
-}
+  }
+</main>

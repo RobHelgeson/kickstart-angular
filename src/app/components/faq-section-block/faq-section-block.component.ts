@@ -6,13 +6,7 @@ import { FaqListComponent } from '../faq-list/faq-list.component';
   selector: 'app-faq-section-block',
   standalone: true,
   imports: [FaqListComponent],
-  template: `
-    <app-faq-list
-      [heading]="section()?.title ?? ''"
-      [subtitle]="section()?.subtitle ?? ''"
-      [faqs]="section()?.faqs ?? []"
-    />
-  `,
+  template: `<app-faq-list [heading]="section().title" [subtitle]="section().subtitle ?? ''" [faqs]="section().faqs" />`,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FaqSectionBlockComponent {

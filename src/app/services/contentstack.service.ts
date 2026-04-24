@@ -50,7 +50,7 @@ export class ContentstackService {
     }
   }
 
-  getEntryByUrl(contentType: string, url: string): Observable<any> {
+  getEntryByUrl(contentType: string, url: string, editable = true): Observable<any> {
     const { contentstack: config } = environment;
 
     return from(
@@ -61,7 +61,7 @@ export class ContentstackService {
         .where('url', QueryOperation.EQUALS, url)
         .find<Page>()
         .then((result: any) => {
-          if (config.preview) {
+          if (config.preview && editable) {
             contentstack.default.Utils.addEditableTags(result.entries[0], contentType, true);
           }
 
@@ -87,10 +87,7 @@ export class ContentstackService {
       this.stack
         .contentType('page')
         .entry()
-        .includeReference([
-          'blocks.faq_section.section',
-          'blocks.faq_section.section.faqs'
-        ])
+        .includeReference(['blocks.faq_section.section', 'blocks.faq_section.section.faqs'])
         .query()
         .where('url', QueryOperation.EQUALS, url)
         .find<PageWithBlocks>()

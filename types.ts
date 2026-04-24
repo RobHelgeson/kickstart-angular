@@ -67,6 +67,14 @@ export type FaqSectionBlock = {
 
 export type PageBlock = { block: HeroBlock } | { faq_section: FaqSectionBlock };
 
+// BlockKey is derived from PageBlock so adding a new union member automatically
+// expands the key set — the registry's `satisfies` clause will then require a
+// matching entry or the build fails.
+export type BlockKey = keyof { [K in PageBlock as keyof K]: unknown };
+
+// Extracts the payload type for a given block key from the discriminated union.
+export type PayloadFor<K extends BlockKey> = Extract<PageBlock, Record<K, unknown>>[K];
+
 export interface PageWithBlocks extends Page {
   blocks?: PageBlock[];
 }

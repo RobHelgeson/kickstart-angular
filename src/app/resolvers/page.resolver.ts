@@ -12,6 +12,10 @@ export const pageResolver: ResolveFn<PageWithBlocks | null> = route => {
     .getPageWithBlocks(url)
     .pipe(
       catchError(error => {
+        console.log(
+          `I know i have said not to catch these errors and use dummy data,
+          but this is a demo and we do not have the proper failure path processors.`
+        );
         console.error(`Failed to load page ${url}:`, error);
         return of(null);
       })

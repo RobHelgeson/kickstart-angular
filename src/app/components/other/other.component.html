@@ -2,11 +2,14 @@
   <section class="p-4">
     @if (error()) {
       <p>{{ error() }}</p>
-    } @if (page()?.title) {
+    }
+    @if (page()?.title) {
       <h1 class="text-4xl font-bold mb-4" [attr.data-cslp]="page()?.$ && page()?.$.title['data-cslp']">{{ page()?.title }}</h1>
-    } @if (page()?.description) {
+    }
+    @if (page()?.description) {
       <p class="mb-4" [attr.data-cslp]="page()?.$ && page()?.$.description['data-cslp']">{{ page()?.description }}</p>
-    } @if (page()?.image) {
+    }
+    @if (page()?.image) {
       <img
         class="mb-4"
         width="768"
@@ -15,7 +18,8 @@
         [alt]="page()?.image?.title"
         [attr.data-cslp]="page()?.image.$ && page()?.image.$.url['data-cslp']"
       />
-    } @if (page()?.rich_text) {
+    }
+    @if (page()?.rich_text) {
       <div [attr.data-cslp]="page()?.$ && page()?.$.rich_text['data-cslp']" [innerHTML]="page()?.rich_text"></div>
     }
 
@@ -43,7 +47,8 @@
           <div class="w-full md:w-1/2 p-4">
             @if (item.block.title) {
               <h2 class="text-2xl font-bold" [attr.data-cslp]="item.block.$ && item.block.$.title['data-cslp']">{{ item.block.title }}</h2>
-            } @if (item.block.copy) {
+            }
+            @if (item.block.copy) {
               <div class="prose" [attr.data-cslp]="item.block.$ && item.block.$.copy['data-cslp']" [innerHTML]="item.block.copy"></div>
             }
           </div>
